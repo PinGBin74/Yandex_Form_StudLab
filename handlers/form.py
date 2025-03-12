@@ -41,7 +41,7 @@ async def patch_form(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=e.detail)
 
 
-@router.delete("/{form_id}", response_model=FormSchema)
+@router.delete("/{form_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_form(
     form_id: int,
     form_service: Annotated[FormService, Depends(get_form_service)],
