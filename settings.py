@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     DB_PASSWORD: str = "password"
     DB_DRIVER: str = "postgresql+psycopg2"
     DB_NAME: str = "YaStudLab"
+    JWT_SECRET_KEY: str = "secret_key"
+    JWT_ENCODE_ALGORITHM: str = "HS256"
 
     @property
     def db_url(self):

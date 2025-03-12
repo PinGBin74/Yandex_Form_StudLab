@@ -25,18 +25,26 @@ class FormRepository:
             fields=form.fields,
             user_id=user_id,
         )
-        self.db_session.add(form_model)
-        self.db_session.commit()
-        self.db_session.refresh(form_model)
+        with self.db_session() as session:
+            session.add(form_model)
+            session.commit()
         return form_model.id
 
-    def delete_form(self, form_id: int) -> None:
-        self.db_session.execute(delete(Form).where(Form.id == form_id))
-        self.db_session.commit()
+    def delete_form(self, form_id: int, user_id: int) -> None:
+        query = delete(Form).where(Form.id == form_id, Form.user_id == user_id)
+        with self.db_session() as session:
+            session.execute(query)
+            session.commit()
 
     def update_form_title(self, form_id: int, title: str) -> Optional[Form]:
-        self.db_session.execute(
-            update(Form).where(Form.id == form_id).values(title=title)
+        query = (
+            update(Form)
+            .where(Form.id == form_id)
+            .valeus(title=title)
+            .returning(Form.id)
         )
-        self.db_session.commit()
+        with self.db_session() as session:
+            form_id: int = session.execute(query).scalar()
+            session.commit()
+            session.flush()
         return self.get_form(form_id)

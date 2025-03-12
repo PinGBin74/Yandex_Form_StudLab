@@ -16,3 +16,7 @@ class TokenNotCorrect(Exception):
 
 class FormNotFound(Exception):
     detail = "Form not found"
+
+
+class UserAlreadyExists(Exception):
+    detail = "User already exists"

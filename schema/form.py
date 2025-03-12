@@ -10,8 +10,8 @@ class FieldSchema(BaseModel):
 
 
 class FormSchema(BaseModel):
-    id: int
-    title: str
+    id: Optional[int] = None
+    title: Optional[str] = None
     fields: List[FieldSchema]
     user_id: int
 

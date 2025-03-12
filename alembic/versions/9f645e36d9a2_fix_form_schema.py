@@ -1,8 +1,8 @@
-"""add_Form_Answers_User
+"""fix_form_schema
 
-Revision ID: 996ac0dfc6d6
-Revises: c6c22dc27e51
-Create Date: 2025-03-10 21:09:16.000818
+Revision ID: 9f645e36d9a2
+Revises: a8a205840d7d
+Create Date: 2025-03-12 13:45:01.084585
 
 """
 
@@ -13,8 +13,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = "996ac0dfc6d6"
-down_revision: Union[str, None] = "c6c22dc27e51"
+revision: str = "9f645e36d9a2"
+down_revision: Union[str, None] = "a8a205840d7d"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 

@@ -1,7 +1,7 @@
 """Add
 
 Revision ID: 4834cb361e66
-Revises: 
+Revises:
 Create Date: 2025-03-10 17:17:23.776765
 
 """

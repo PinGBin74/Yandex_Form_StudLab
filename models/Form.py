@@ -10,6 +10,3 @@ class Form(Base):
     title: Mapped[str] = mapped_column(String, nullable=False)
     fields: Mapped[JSON] = mapped_column(JSON, nullable=False)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
-
-    user = relationship("User", back_populates="forms")
-    answers = relationship("Answers", back_populates="form")
