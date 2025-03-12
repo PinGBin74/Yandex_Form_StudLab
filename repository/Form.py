@@ -16,13 +16,14 @@ class FormRepository:
 
     def get_form(self, form_id: int) -> Optional[Form]:
         with self.db_session() as session:
-            form: Form = session.execute(select(Form)).scalars().first()
+            form: Form = session.execute(select(Form).where(Form.id==form_id)).scalars().first()
         return form
 
     def create_form(self, form: FormCreateSchema, user_id: int) -> int:
+        fields_as_dicts = [field.model_dump() for field in form.fields]
         form_model = Form(
             title=form.title,
-            fields=form.fields,
+            fields=fields_as_dicts,
             user_id=user_id,
         )
         with self.db_session() as session:
@@ -40,8 +41,8 @@ class FormRepository:
         query = (
             update(Form)
             .where(Form.id == form_id)
-            .valeus(title=title)
-            .returning(Form.id)
+            .values(title=title)
+            .returning(Form)
         )
         with self.db_session() as session:
             form_id: int = session.execute(query).scalar()

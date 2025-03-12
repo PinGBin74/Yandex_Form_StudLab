@@ -4,7 +4,7 @@ from datetime import timedelta
 from database.accessor import settings
 from settings import Settings
 from exception import (
-    UserNotFound,
+    UserNotFoundException,
     UserNotCorrectPasswordException,
     TokenNotCorrect,
     TokenExpired,
@@ -30,7 +30,7 @@ class AuthService:
     @staticmethod
     def _validate_auth_user(user: UserProfile, password: str):
         if not user:
-            raise UserNotFound
+            raise UserNotFoundException
         if user.password != password:
             raise UserNotCorrectPasswordException
 

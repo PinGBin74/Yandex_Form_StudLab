@@ -2,7 +2,7 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException
 from dependecy import get_auth_service
-from exception import UserNotFound, UserNotCorrectPasswordException
+from exception import UserNotFoundException, UserNotCorrectPasswordException
 from schema.user import UserLogin, CreateUser
 from service.auth import AuthService
 
@@ -17,7 +17,7 @@ async def login(
     try:
         return auth_service.login(body.username, body.password)
 
-    except UserNotFound as e:
+    except UserNotFoundException as e:
         raise HTTPException(status_code=404, detail=str(e))
     except UserNotCorrectPasswordException as e:
         raise HTTPException(status_code=403, detail=str(e))

@@ -1,4 +1,4 @@
-class UserNotFound(Exception):
+class UserNotFoundException(Exception):
     detail = "User not found"
 
 

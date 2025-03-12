@@ -14,13 +14,9 @@ class UserRepository:
 
     def create_user(self, user: CreateUser) -> UserProfile:
         query = (
-            insert(UserProfile)
-            .values(
-                **user.model_dump(),
-            )
-            .returning(UserProfile.id)
+            insert(UserProfile).values(**user.model_dump()).returning(UserProfile.id)
         )
-
+        # model_dump превращает в словарь( с помощью ** распаковываем)
         with self.db_session() as session:
             user_id: int = session.execute(query).scalar()
             session.commit()
@@ -30,10 +26,9 @@ class UserRepository:
     def get_user(self, user_id) -> Optional[UserProfile]:
         query = select(UserProfile).where(UserProfile.id == user_id)
         with self.db_session() as session:
-            return session.execute(query).first()
+            return session.execute(query).scalars().first()
 
     def get_user_by_username(self, username: str) -> Optional[UserProfile]:
         query = select(UserProfile).where(UserProfile.username == username)
         with self.db_session() as session:
-            result = session.execute(query).scalar_one_or_none()
-            return result
+            return session.execute(query).scalars().first()
