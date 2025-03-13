@@ -25,7 +25,13 @@ class FormService:
         return FormSchema.model_validate(form)
 
     def delete_form(self, form_id: int, user_id: int) -> None:
-        form = self.form_repository.get_user_form(form_id=form_id,user_id=user_id)
+        form = self.form_repository.get_user_form(form_id=form_id, user_id=user_id)
         if not form:
             raise FormNotFound
         self.form_repository.delete_form(form_id=form_id, user_id=user_id)
+
+    def get_form_by_id(self, form_id: int) -> FormSchema:
+        form = self.form_repository.get_form_by_id(form_id=form_id)
+        if not form:
+            raise FormNotFound
+        return FormSchema.model_validate(form)
