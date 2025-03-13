@@ -16,7 +16,11 @@ class FormRepository:
 
     def get_form(self, form_id: int) -> Optional[Form]:
         with self.db_session() as session:
-            form: Form = session.execute(select(Form).where(Form.id==form_id)).scalars().first()
+            form: Form = (
+                session.execute(select(Form).where(Form.id == form_id))
+                .scalars()
+                .first()
+            )
         return form
 
     def create_form(self, form: FormCreateSchema, user_id: int) -> int:
@@ -51,9 +55,14 @@ class FormRepository:
             session.flush()
         return self.get_form(form_id)
 
-
-    def get_user_form(self,form_id: int,user_id:int) -> Optional[Form]:
-        query=select(Form).where(Form.id == form_id, Form.user_id == user_id)
+    def get_user_form(self, form_id: int, user_id: int) -> Optional[Form]:
+        query = select(Form).where(Form.id == form_id, Form.user_id == user_id)
         with self.db_session() as session:
             form: Form = session.execute(query).scalar_one_or_none()
+        return form
+
+    def get_form_by_id(self, form_id: int) -> Optional[Form]:
+        query = select(Form).where(Form.id == form_id)
+        with self.db_session() as session:
+            form: Form = session.execute(query).scalar()
         return form
