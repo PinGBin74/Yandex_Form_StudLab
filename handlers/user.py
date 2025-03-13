@@ -1,5 +1,5 @@
 from typing import Annotated
-from fastapi import APIRouter, Depends,HTTPException,status
+from fastapi import APIRouter, Depends, HTTPException, status
 
 from dependecy import get_user_service
 from exception import UserAlreadyExists
@@ -19,4 +19,3 @@ async def create_user(
 
     except UserAlreadyExists as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
-
