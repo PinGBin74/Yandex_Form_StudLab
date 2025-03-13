@@ -18,7 +18,7 @@ async def get_forms(form_service: Annotated[FormService, Depends(get_form_servic
 @router.get("/{form_id}", response_model=FormSchema)
 async def search_form(
     form_id: int,
-    form_service: FormService=Depends(get_form_service),
+    form_service: FormService = Depends(get_form_service),
 ):
     try:
         return form_service.get_form_by_id(form_id=form_id)
@@ -34,6 +34,7 @@ async def create_form(
 ):
     form = form_service.create_form(body, user_id)
     return form
+
 
 @router.patch("/{form_id}", response_model=FormSchema)
 async def patch_form(
