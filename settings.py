@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     DB_PORT: int = 5432
     DB_USER: str = "postgres"
     DB_PASSWORD: str = "password"
-    DB_DRIVER: str = "postgresql+psycopg2"
+    DB_DRIVER: str = "postgresql+asyncpg"
     DB_NAME: str = "YaStudLab"
     JWT_SECRET_KEY: str = "Secret_key"
     JWT_ENCODE_ALGORITHM: str = "HS256"

@@ -6,10 +6,8 @@ PORT ?= 8080
 .PHONY: run install uninstall help
 
 run: ## Run the application using uvicorn with provided arguments on defaults
-	#poetry run gunicorn app.main:app -c gunicorn.conf.py --reload
-
-	#uvicorn main:app --host $(HOST) --port $(PORT) --reload --env-file $(ENV_FILE)
-	uvicorn main:app --host 127.0.0.1 --port 8000 --reload
+	#uvicorn main:app --host 127.0.0.1 --port 8000 --reload for work with uvicorn
+	poetry run gunicorn main:app --worker-class uvicorn.workers.UvicornWorker -c gunicorn.conf.py --reload
 
 install: ## Install a dependency using poetry
 	@echo "Installing dependency $(LIBRARY)"
