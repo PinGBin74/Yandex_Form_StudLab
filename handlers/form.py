@@ -2,7 +2,7 @@ from typing import Annotated
 from fastapi import APIRouter, status, Depends, HTTPException
 
 from exception import FormNotFound
-from schema import FormSchema, FormCreateSchema,JsonResponse
+from schema import FormCreateSchema,JSON,FormSchema
 
 from service import FormService
 from dependecy import get_form_service, get_request_user_id
@@ -27,7 +27,7 @@ async def search_form(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e))
 
 
-@router.post("/create", response_model=FormSchema,response_class=JsonResponse)
+@router.post("/create", response_model=FormSchema)
 async def create_form(
     body: FormCreateSchema,
     form_service: Annotated[FormService, Depends(get_form_service)],
