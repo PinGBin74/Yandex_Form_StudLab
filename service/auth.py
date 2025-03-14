@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from datetime import timedelta
 
-from database.accessor import settings
 from settings import Settings
 from exception import (
     UserNotFoundException,
@@ -21,8 +20,8 @@ class AuthService:
     user_repository: UserRepository
     settings: Settings
 
-    def login(self, username: str, password: str) -> UserLogin:
-        user = self.user_repository.get_user_by_username(username=username)
+    async def login(self, username: str, password: str) -> UserLogin:
+        user = await self.user_repository.get_user_by_username(username=username)
         self._validate_auth_user(user, password)
         access_token = self.generate_access_token(user_id=user.id)
         return UserLogin(user_id=user.id, access_token=access_token)

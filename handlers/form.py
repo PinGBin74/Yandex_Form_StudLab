@@ -2,7 +2,7 @@ from typing import Annotated
 from fastapi import APIRouter, status, Depends, HTTPException
 
 from exception import FormNotFound
-from schema import FormSchema, FormCreateSchema
+from schema import FormSchema, FormCreateSchema,JsonResponse
 
 from service import FormService
 from dependecy import get_form_service, get_request_user_id
@@ -12,7 +12,8 @@ router = APIRouter(prefix="/form", tags=["form"])
 
 @router.get("/all", response_model=list[FormSchema])
 async def get_forms(form_service: Annotated[FormService, Depends(get_form_service)]):
-    return form_service.get_forms()
+    form = await form_service.get_forms()
+    return form
 
 
 @router.get("/{form_id}", response_model=FormSchema)
@@ -21,18 +22,18 @@ async def search_form(
     form_service: FormService = Depends(get_form_service),
 ):
     try:
-        return form_service.get_form_by_id(form_id=form_id)
+        return await form_service.get_form_by_id(form_id=form_id)
     except FormNotFound as e:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e))
 
 
-@router.post("/create", response_model=FormSchema)
+@router.post("/create", response_model=FormSchema,response_class=JsonResponse)
 async def create_form(
     body: FormCreateSchema,
     form_service: Annotated[FormService, Depends(get_form_service)],
     user_id: int = Depends(get_request_user_id),
 ):
-    form = form_service.create_form(body, user_id)
+    form = await form_service.create_form(body, user_id)
     return form
 
 
@@ -44,7 +45,7 @@ async def patch_form(
     user_id: int = Depends(get_request_user_id),
 ):
     try:
-        return form_service.update_form_title(
+        return await form_service.update_form_title(
             form_id=form_id, title=title, user_id=user_id
         )
 
@@ -59,7 +60,7 @@ async def delete_form(
     user_id: int = Depends(get_request_user_id),
 ):
     try:
-        form_service.delete_form(form_id=form_id, user_id=user_id)
+        await form_service.delete_form(form_id=form_id, user_id=user_id)
 
     except FormNotFound as e:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=e.detail)
