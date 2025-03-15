@@ -12,7 +12,8 @@
 - **Создать и активировать виртуальное окружение:**
     ```sh
     poetry init
-
+  
+    ```sh
     poetry install
 
 - **Для работы с Docker:**
@@ -21,7 +22,7 @@
     **user:**
     ```sh
     postgres
-    **password:**
+**password:**
     ```sh
   password
     name:
