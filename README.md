@@ -35,7 +35,7 @@
     ```
 - **Выполнить миграции:**
   ```sh
-  make migrate-create MIGRATION=first_migration
+  alembic revision --autogenerate -m 'first_migrate'
   
 - **Запустить проект:**
   ```sh
