@@ -1,6 +1,6 @@
 # Yandex Form StudLab
 
-**Стек:** Python 3.12, FastAPI, PostgreSQL, SQLAlchemy, JWT
+**Стек:** Python 3.12, FastAPI, PostgreSQL, SQLAlchemy, JWT, Gunicorn
 
 ## Как запустить проект:
 
@@ -20,7 +20,7 @@
     **user:**
     ```sh
     postgres
-**password:**
+    **password:**
     ```sh
   password
     name:
