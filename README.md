@@ -40,8 +40,7 @@
 - **Запустить проект:**
   ```sh
   make run
- 
-- **Для работы с Postman collections:**
+
 ## Загрузка коллекции в Postman:
 
 1. Запустите Postman;
