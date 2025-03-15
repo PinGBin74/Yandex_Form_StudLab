@@ -11,8 +11,7 @@
 - **Создать и активировать виртуальное окружение:**
     ```sh
     poetry init
-  
-    ```sh
+
     poetry install
 
 - **Для работы с Docker:**
@@ -29,5 +28,5 @@
     YaStudLab@0.0.0.0
 
     ```bash
-  -docker-compose up -d
+    docker-compose up -d
 
