@@ -1,4 +1,4 @@
-#Yandex Form StudLab
+# Yandex Form StudLab
 
 **Стек:** Python 3.12, FastAPI, PostgreSQL, SQLAlchemy, JWT
 
