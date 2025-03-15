@@ -39,7 +39,8 @@
   
 - **Запустить проект:**
   ```sh
-  make run
+  oetry run gunicorn main:app --worker-class uvicorn.workers.UvicornWorker -c gunicorn.conf.py --reload
+
 
 ## Загрузка коллекции в Postman:
 
