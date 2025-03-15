@@ -15,18 +15,21 @@
     poetry install
 
 - **Для работы с Docker:**
-    - Создать PostgreSQL
-    **Port:** 5432
-    **user:**
-    ```sh
-    postgres
-    **password:**
-    ```sh
-  password
-    name:
-    ```sh
-    YaStudLab@0.0.0.0
-
+  - Создать контейнер PostgreSQL с настройками:
+    - **Port:** `5432`
+    - **User:** 
+      ```sh
+      postgres
+      ```
+    - **Password:**
+      ```sh
+      password
+      ```
+    - **Database Name:** 
+      ```sh
+      YaStudLab
+      ```
+  - Запустить контейнер:
     ```bash
     docker-compose up -d
-
+    ```
