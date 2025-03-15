@@ -39,7 +39,7 @@
   
 - **Запустить проект:**
   ```sh
-  oetry run gunicorn main:app --worker-class uvicorn.workers.UvicornWorker -c gunicorn.conf.py --reload
+  poetry run gunicorn main:app --worker-class uvicorn.workers.UvicornWorker -c gunicorn.conf.py --reload
 
 
 ## Загрузка коллекции в Postman:
