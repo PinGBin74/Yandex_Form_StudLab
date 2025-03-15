@@ -17,14 +17,17 @@
 
 - **Для работы с Docker:**
     Создать PostgreSQL
-    **Port:**5432
+    **Port:** 5432
     **user:**
     ```sh
     postgres
     **password:**
-    ```shpassword
+    ```sh
+  password
     name:
     ```sh
     YaStudLab@0.0.0.0
 
+    ```bash
+  -docker-compose up -d
 
