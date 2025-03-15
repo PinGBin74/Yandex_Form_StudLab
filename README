@@ -1,0 +1,11 @@
+# Yandex Form StudLab
+
+##Установка
+
+Склонируйте репозиторий и установите зависимости:
+```bash
+https://github.com/PinGBin74/Yandex_Form_StudLab.git
+
+poetry install
+
+Для Docker:
