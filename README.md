@@ -15,6 +15,10 @@
     poetry install
 
 - **Для работы с Docker:**
+- Запустить контейнер:
+    ```bash
+    docker-compose up -d
+    ```
   - Создать контейнер PostgreSQL с настройками:
     - **Port:** `5432`
     - **User:** 
@@ -29,10 +33,7 @@
       ```sh
       YaStudLab@0.0.0.0
       ```
-  - Запустить контейнер:
-    ```bash
-    docker-compose up -d
-    ```
+
 - **Выполнить миграции:**
   ```sh
   alembic revision --autogenerate -m 'first_migrate'
