@@ -36,6 +36,9 @@
 - **Выполнить миграции:**
   ```sh
   alembic revision --autogenerate -m 'first_migrate'
+- **Применить миграции:**
+  ```
+  alembic upgrade head
   
 - **Запустить проект:**
   ```sh
