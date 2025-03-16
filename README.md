@@ -8,6 +8,10 @@
   ```sh
   pip install poetry
   ```
+- **Установить alembic:**
+  ```sh
+  pip install alembic
+  ```
 
 - **Клонировать репозиторий и перейти в него в командной строке:**
     ```sh
