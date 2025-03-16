@@ -15,7 +15,12 @@
     poetry install
 
 - **Для работы с Docker:**
+  - Запустить контейнер:
+      ```bash
+      docker-compose up -d
+      ```
   - Создать контейнер PostgreSQL с настройками:
+
     - **Port:** `5432`
     - **User:** 
       ```sh
@@ -27,22 +32,15 @@
       ```
     - **Database Name:** 
       ```sh
-      YaStudLab@0.0.0.0
+      YaStudLab@127.0.0.1
       ```
-  - Запустить контейнер:
-    ```bash
-    docker-compose up -d
-    ```
-- **Выполнить миграции:**
-  ```sh
-  alembic revision --autogenerate -m 'first_migrate'
 - **Применить миграции:**
-  ```
+  ```sh
   alembic upgrade head
   
 - **Запустить проект:**
   ```sh
-  poetry run gunicorn main:app --worker-class uvicorn.workers.UvicornWorker -c gunicorn.conf.py --reload
+  uvicorn main:app --host 127.0.0.1 --port 8080 --reload
 
 
 ## Загрузка коллекции в Postman:
