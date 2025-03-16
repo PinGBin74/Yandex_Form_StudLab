@@ -4,13 +4,12 @@ from sqlalchemy.ext.asyncio import create_async_engine
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-from models import *
 from alembic import context, op
 
-from database import Base
-from settings import Settings
+from app.database import Base
+from app.settings import Settings
 import sqlalchemy as sa
-from schema.JSON import JSON
+from app.form.schema.JSON import JSON
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
