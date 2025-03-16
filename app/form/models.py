@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from database import Base
-from schema.JSON import JSON
+from app.database import Base
+from app.form.schema import JSON
 
 class Form(Base):
     __tablename__ = "forms"

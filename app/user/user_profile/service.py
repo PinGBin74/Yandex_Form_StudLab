@@ -1,9 +1,10 @@
 from dataclasses import dataclass
-from schema import UserLogin, CreateUser
-from repository.user import UserRepository
-from service.auth import AuthService
+from app.user.auth.schema import UserLogin
+from app.user.user_profile.schema import CreateUser
+from app.user.user_profile.repository import UserRepository
+from app.user.auth.service import AuthService
 from fastapi import HTTPException, status
-from exception import UserAlreadyExists
+from app.exception import UserAlreadyExists
 
 
 @dataclass

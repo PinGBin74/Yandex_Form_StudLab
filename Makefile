@@ -7,15 +7,15 @@ PORT ?= 8080
 
 run: ## Run the application using uvicorn with provided arguments on defaults
 	#uvicorn main:app --host 127.0.0.1 --port 8000 --reload for work with uvicorn
-	#poetry run gunicorn main:app --worker-class uvicorn.workers.UvicornWorker -c gunicorn.conf.py --reload
-	uvicorn main:app --host 127.0.0.1 --port 8080 --reload
+	#poetry run gunicorn app/main:app --worker-class uvicorn.workers.UvicornWorker -c gunicorn.conf.py --reload
+	uvicorn app.main:app --host 127.0.0.1 --port 8080 --reload
 
 install: ## Install a dependency using poetry
 	@echo "Installing dependency $(LIBRARY)"
 	poetry add $(LIBRARY)
 
 uninstall: ## Uninstall a dependency using poetry
-	@echo "Uninstalling dependency $(LIBRARY)"
+	@echo "Uninstalling dependency $(LIBRAßRY)"
 	poetry remove $(LIBRARY)
 migrate-create:
 	alembic revision --autogenerate -m $(MIGRATION)

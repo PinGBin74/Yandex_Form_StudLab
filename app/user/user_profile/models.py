@@ -2,7 +2,7 @@ from typing import Optional
 
 from sqlalchemy import Column, Integer, String, JSON, ForeignKey, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from database import Base
+from app.database import Base
 
 
 class UserProfile(Base):

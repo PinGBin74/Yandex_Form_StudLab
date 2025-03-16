@@ -1,6 +1,6 @@
-from exception import FormNotFound
-from repository import FormRepository
-from schema import FormSchema, FormCreateSchema
+from app.exception import FormNotFound
+from app.form.repository import FormRepository
+from app.form.schema import FormSchema, FormCreateSchema
 from dataclasses import dataclass
 
 

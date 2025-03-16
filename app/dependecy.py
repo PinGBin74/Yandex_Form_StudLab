@@ -1,14 +1,14 @@
 from fastapi import Depends, Request, security, Security, HTTPException
 from sqlalchemy.orm import Session
 
-from database import get_db_session
-from exception import TokenExpired, TokenNotCorrect
-from repository.Form import FormRepository
-from repository.user import UserRepository
-from service.user import UserService
-from settings import Settings
-from service import FormService
-from service.auth import AuthService
+from app.database import get_db_session
+from app.exception import TokenExpired, TokenNotCorrect
+from app.form.repository import FormRepository
+from app.user.user_profile.repository import UserRepository
+from app.user.user_profile.service import UserService
+from app.settings import Settings
+from app.form.service import FormService
+from app.user.auth.service import AuthService
 
 
 async def get_form_repository(

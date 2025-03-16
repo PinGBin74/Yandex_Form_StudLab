@@ -1,10 +1,9 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy import delete, update
-from models import Form
-from schema.form import FormCreateSchema
+from app.form.schema import FormCreateSchema
 from typing import Optional, List
-
+from app.form.models import Form
 
 class FormRepository:
     def __init__(self, db_session: AsyncSession):
@@ -29,11 +28,11 @@ class FormRepository:
             fields=fields_as_dicts,
             user_id=user_id,
         )
-        async with self.db_session as session:  # создаём новую сессию
+        async with self.db_session as session:
             async with session.begin():
                 session.add(form_model)
-                await session.flush()  # гарантируем, что id сгенерирован
-                await session.refresh(form_model)  # обновляем объект внутри транзакции
+                await session.flush()
+                await session.refresh(form_model)
         return form_model.id
     async def delete_form(self, form_id: int, user_id: int) -> None:
         async with self.db_session.begin():

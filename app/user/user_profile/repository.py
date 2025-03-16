@@ -4,9 +4,9 @@ from sqlalchemy import select, insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.exc import IntegrityError
 from fastapi import HTTPException, status
-from exception import UserAlreadyExists
-from models import UserProfile
-from schema import CreateUser
+from app.exception import UserAlreadyExists
+from app.user.user_profile.models import UserProfile
+from app.user.user_profile.schema import CreateUser
 
 
 @dataclass
