@@ -26,11 +26,13 @@ if config.config_file_name is not None:
 # target_metadata = mymodel.Base.metadata
 target_metadata = Base.metadata
 
+
 def render_item(type_, obj, autogen_context):
     if isinstance(obj, JSON):
         autogen_context.imports.add("from schema.JSON import JSON")
         return "JSON()"
     return False
+
 
 def do_run_migrations(connection):
     context.configure(

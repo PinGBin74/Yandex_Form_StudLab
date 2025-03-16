@@ -5,6 +5,7 @@ from app.form.schema import FormCreateSchema
 from typing import Optional, List
 from app.form.models import Form
 
+
 class FormRepository:
     def __init__(self, db_session: AsyncSession):
         self.db_session = db_session
@@ -34,6 +35,7 @@ class FormRepository:
                 await session.flush()
                 await session.refresh(form_model)
         return form_model.id
+
     async def delete_form(self, form_id: int, user_id: int) -> None:
         async with self.db_session.begin():
             await self.db_session.execute(

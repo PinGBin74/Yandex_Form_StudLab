@@ -3,6 +3,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.database import Base
 from app.form.schema import JSON
 
+
 class Form(Base):
     __tablename__ = "forms"
 

@@ -1,6 +1,7 @@
 import json
 from sqlalchemy.types import TypeDecorator, VARCHAR
 
+
 class JSON(TypeDecorator):
     impl = VARCHAR
 
