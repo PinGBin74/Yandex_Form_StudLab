@@ -1,6 +1,6 @@
 # Yandex Form StudLab
 
-**Стек:** Python 3.12, FastAPI, PostgreSQL, SQLAlchemy, JWT, Gunicorn
+**Стек:** Python 3.12, FastAPI, PostgreSQL, SQLAlchemy, JWT, Gunicorn/Uvicorn
 
 ## Как запустить проект:
 
