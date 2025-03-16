@@ -5,10 +5,12 @@ from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from models import *
-from alembic import context
+from alembic import context, op
 
 from database import Base
 from settings import Settings
+import sqlalchemy as sa
+from schema.JSON import JSON
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -25,6 +27,11 @@ if config.config_file_name is not None:
 # target_metadata = mymodel.Base.metadata
 target_metadata = Base.metadata
 
+def render_item(type_, obj, autogen_context):
+    if isinstance(obj, JSON):
+        autogen_context.imports.add("from schema.JSON import JSON")
+        return "JSON()"
+    return False
 
 def do_run_migrations(connection):
     context.configure(
@@ -33,7 +40,7 @@ def do_run_migrations(connection):
         connection=connection,
         target_metadata=target_metadata,
         include_schemas=True,
-        # literal_binds=True,
+        render_item=render_item,
         version_table_schema=target_metadata.schema,
     )
 
