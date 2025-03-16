@@ -11,6 +11,7 @@
 - **Создать и активировать виртуальное окружение:**
     ```sh
     poetry env use python3.12  # Укажите версию Python
+    
     ```sh
     poetry install
 
