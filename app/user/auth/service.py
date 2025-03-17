@@ -2,16 +2,11 @@ from dataclasses import dataclass
 from datetime import timedelta
 
 from app.settings import Settings
-from app.exception import (
-    UserNotFoundException,
-    UserNotCorrectPasswordException,
-    TokenNotCorrect,
-    TokenExpired,
-)
+from app.exception import UserNotFoundException, UserNotCorrectPasswordException
 from app.user.user_profile.models import UserProfile
 from app.user.user_profile.repository import UserRepository
 from app.user.auth.schema import UserLogin
-from jose import jwt, JWTError
+from jose import jwt
 import datetime as dt
 
 

@@ -3,7 +3,6 @@ from typing import Optional
 from sqlalchemy import select, insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.exc import IntegrityError
-from fastapi import HTTPException, status
 from app.exception import UserAlreadyExists
 from app.user.user_profile.models import UserProfile
 from app.user.user_profile.schema import CreateUser
