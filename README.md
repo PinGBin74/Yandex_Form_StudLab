@@ -4,14 +4,15 @@
 
 ## Как запустить проект:
 
+- **Клонировать репозиторий и перейти в него в командной строке:**
+    ```sh
+    https://github.com/PinGBin74/Yandex_Form_StudLab.git
+
+
 - **Установить poetry:**
   ```sh
   pip install poetry
   ```
-
-- **Клонировать репозиторий и перейти в него в командной строке:**
-    ```sh
-    https://github.com/PinGBin74/Yandex_Form_StudLab.git
 
 - **Создать и активировать виртуальное окружение:**
     ```sh
@@ -43,7 +44,7 @@
   
 - **Запустить проект:**
   ```sh
-  uvicorn main:app --host 127.0.0.1 --port 8080 --reload
+  uvicorn app.main:app --host 127.0.0.1 --port 8080 --reload
 
 
 ## Загрузка коллекции в Postman:
