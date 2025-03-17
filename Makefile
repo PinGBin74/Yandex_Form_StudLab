@@ -8,7 +8,7 @@ PORT ?= 8080
 run: ## Run the application using uvicorn with provided arguments on defaults
 	#uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload for work with uvicorn
 	#poetry run gunicorn app.main:app --worker-class uvicorn.workers.UvicornWorker -c gunicorn.conf.py --reload
-	#uvicorn app.main:app --host 127.0.0.1 --port 8080 --reload
+	uvicorn app.main:app --host 127.0.0.1 --port 8080 --reload
 
 install: ## Install a dependency using poetry
 	@echo "Installing dependency $(LIBRARY)"
