@@ -23,7 +23,7 @@
       ```bash
       docker-compose up -d
       ```
-  - Создать контейнер PostgreSQL с настройками:
+  - Создать PostgreSQL с настройками:
 
     - **Port:** `5432`
     - **User:** 
